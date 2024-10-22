@@ -1,21 +1,21 @@
-#include <Vsinegen.h>
-#include <verilated.h>
-#include <verilated_vcd_c.h>
+#include "Vsinegen.h"
+#include "verilated.h"
+#include "verilated_vcd_c.h"
 
-main(int argc, char **argv, char **env) {
-
-    Verilated::commandArgs(argc, argv)
-
+int main(int argc, char **argv, char **env) {
+    Verilated::commandArgs(argc, argv);
     int i, clk;
-
     Vsinegen dut;
 
     Verilated::traceEverOn(true);
     VerilatedVcdC trace;
-    dut.trace(trace, 99);
+    dut.trace(&trace, 99);
     trace.open("sinegen.vcd");
 
     // init inputs to dut
+    dut.clk = 1;
+    dut.en = 1;
+    dut.rst = 0;
 
     // loop
     for (i = 0; i < 5000; i++) {
