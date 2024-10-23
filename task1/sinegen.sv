@@ -5,6 +5,7 @@ module sinegen #(
     input logic clk,
     input logic en,
     input logic rst,
+    input logic [WIDTH-1:0] freq,
     output logic [WIDTH-1:0] data
 );
 
@@ -22,11 +23,12 @@ rom #(
     .data(data)
 );
 
-counter #(
+divcounter #(
     .WIDTH(WIDTH)
 ) counter (
     .clk(clk),
     .count(count),
+    .skip(freq),
     .en(en),
     .rst(rst)
 );
