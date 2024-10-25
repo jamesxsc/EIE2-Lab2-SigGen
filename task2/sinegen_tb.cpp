@@ -38,7 +38,8 @@ int main(int argc, char **argv, char **env) {
         // todo set frequency
 
         #ifdef VBUDDY
-        dut.freq = vbdValue();
+        dut.offset = vbdValue();
+
         vbdPlot(dut.data, 0, 255);
         if (vbdGetkey() == 'q') break;
         #endif
