@@ -24,7 +24,6 @@ int main(int argc, char **argv, char **env) {
 
     // init inputs to dut
     dut.clk = 1;
-    dut.en = 1;
     dut.rst = 0;
 
     // loop
@@ -40,7 +39,8 @@ int main(int argc, char **argv, char **env) {
         #ifdef VBUDDY
         dut.offset = vbdValue();
 
-        vbdPlot(dut.data, 0, 255);
+        vbdPlot(dut.data1, 0, 255);
+        vbdPlot(dut.data2, 0, 255);
         if (vbdGetkey() == 'q') break;
         #endif
 
