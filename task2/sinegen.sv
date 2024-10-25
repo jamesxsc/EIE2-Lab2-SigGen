@@ -4,7 +4,7 @@ module sinegen (
     input  logic [7:0]  skip,      // Skip value for frequency control
     output logic [7:0]  data1,     // Output for sine wave
     output logic [7:0]  data2,      // Output for cosine (or phase-shifted sine)
-    input logic  [7:0]  offset,
+    input logic  [7:0]  offset
 );
 
     logic [7:0] phase_off; // Phase offset from rotary encoder

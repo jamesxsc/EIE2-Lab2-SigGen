@@ -3,12 +3,13 @@ module sigdelay (
     input logic clk,
     input logic [8:0] offset,
     input logic [7:0] microphone,
-    output logic [7:0] speaker
+    output logic [7:0] speaker,
+    output logic [8:0] rcount
 );
 
 // don't forget width after var name is array len
 logic [8:0] wcount; // hard-code as we don't pass down parameter for width
-logic [8:0] rcount;
+//logic [8:0] rcount;
 
 counter counter (
     .en(en),
