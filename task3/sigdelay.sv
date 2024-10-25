@@ -3,13 +3,12 @@ module sigdelay (
     input logic clk,
     input logic [8:0] offset,
     input logic [7:0] microphone,
-    output logic [7:0] speaker,
-    output logic [8:0] rcount
+    output logic [7:0] speaker
 );
 
 // don't forget width after var name is array len
 logic [8:0] wcount; // hard-code as we don't pass down parameter for width
-//logic [8:0] rcount;
+logic [8:0] rcount;
 
 counter counter (
     .en(en),
@@ -28,6 +27,6 @@ dpram ram (
     .rout(speaker)
 );
 
-assign rcount = (wcount + offset) % (2**9-1);
+assign rcount = (wcount - offset) % (2**9-1);
 
 endmodule: sigdelay
