@@ -31,7 +31,7 @@ counter #(
 
 always_comb begin
     // slightly different to the lecture way
-    internalen <= (internalcount % skip) == 0;
+    internalen = (internalcount % skip) == 0;
 end
 
 endmodule: divcounter
