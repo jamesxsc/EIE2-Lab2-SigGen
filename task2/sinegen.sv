@@ -33,11 +33,8 @@ module sinegen (
     // Calculate the second address with phase offset
     assign addr2 = addr1 + phase_off;
 
-    // Dual-port ROM for sine and phase-shifted sine data
-    rom #(
-        .ADDR_WIDTH(8),
-        .DATA_WIDTH(8)
-    ) u_rom (
+  rom
+     u_rom (
         .clk(clk),
         .en1(1'b1),
         .en2(1'b1),
