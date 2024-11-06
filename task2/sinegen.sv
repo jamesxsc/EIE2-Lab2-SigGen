@@ -7,7 +7,6 @@ module sinegen (
     input logic  [7:0]  offset
 );
 
-    logic [7:0] phase_off; // Phase offset from rotary encoder
     logic [7:0] addr1;     // Address for sine wave (frequency controlled)
     logic [7:0] addr2;     // Address for phase-shifted wave
 
@@ -22,16 +21,8 @@ module sinegen (
         .count(addr1)         // Output address for sine wave
     );
 
-    // Retrieve the phase offset from Vbuddy's rotary encoder
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst)
-            phase_off <= 8'd0;
-        else
-            phase_off <= offset; // Read phase offset from Vbuddy
-    end
-
     // Calculate the second address with phase offset
-    assign addr2 = addr1 + phase_off;
+    assign addr2 = addr1 + offset;
 
   rom
      u_rom (
